@@ -1,0 +1,540 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 0
+  carry_over_slots_to_new_session: true
+intents:
+- chatvac:
+    use_entities: true
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- password_reset:
+    use_entities: true
+- inform:
+    use_entities: true
+- thank:
+    use_entities: true
+- help:
+    use_entities: true
+- problem_email:
+    use_entities: true
+- open_incident:
+    use_entities: []
+- incident_status:
+    use_entities: true
+- out_of_scope:
+    use_entities: true
+- restart:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- chitchat:
+    use_entities: true
+- chathydrojet:
+    use_entities: true
+- chatbooster:
+    use_entities: true
+- hydrojet_machine_option:
+    use_entities: true
+- booster_pump_option:
+    use_entities: true
+- vacuum_truck_option:
+    use_entities: true
+- nlu_fallback:
+    use_entities: true
+entities:
+- priority
+- number
+- email
+slots:
+  confirm:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  incident_title:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  problem_description:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  username:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: Rasa user
+    auto_fill: true
+    influence_conversation: false
+  number:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  email:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_chathydrojet/positioning_hydrojet_machine:
+  - text: It is recommended that the machine is to be place on a flat and even ground
+  utter_chathydrojet/transfer_hydrojet_machine:
+  - image: null
+    text: A lorry crane is required to lift up/down the machine and transport it to the required destination
+  utter_chathydrojet/hydrojet_machine_checklist:
+  - text: Check the battery polarity to ensure good connection and also battery indicator.
+  utter_chathydrojet/hydrojet_diesel_checklist:
+  - text: Ensure suffiecient Euro 4 and above diesel is used in the diesel tank by looking at the diesel gauge.
+  utter_chathydrojet/hydrojet_water_tank_checklist:
+  - image: null
+    text: Ensure water is full in the water tank.
+  utter_chathydrojet/hydrojet_weight:
+  - image: null
+    text: The hydrojetting machine weight up to 5000kg.
+  utter_chathydrojet/hydrojet_dimension:
+  - image: null
+    text: Dimension of the Hydrojet machine (LengthxWidthxHeight) = 5m X 2.5m X 2m
+  utter_chathydrojet/hydrojet_max_pressure:
+  - text: |
+      There are two different setting for hydrojet machine maximum operating pressure.
+      1) 20 000 PSI or,
+      2) 40 000 PSI
+      As for 40 000 PSI you will required to install ultra high pressure kit.
+      To know more on the installion for 40 000PSI please look for our supervisor.
+  utter_chathydrojet/hydrojet_buildin_watertank:
+  - image: null
+    text: The water tank capacity can contain up to 379Liters which is (100 gallon) and it should contain fresh water or demin water only.
+  utter_chathydrojet/hydrojet_diesel_tank_size:
+  - text: Hydrojet machine diesel tank capacity can store up to 246 Liters which is 65 gallon of diesel
+  utter_chathydrojet/hydrojet_splitter_use:
+  - text: Splitter is use as a dual gun connection and a secondary pressure gauge is available to monitor the pressure.
+  utter_chatbooster/booster_intro:
+  - image: https://i.imgur.com/8d0RZ51.jpg
+    text: |-
+      Booster pump is to increase high flow low pressure water jetting.
+      It provides the extra boost needed to bring fluid pressure to the desire level.
+  utter_chatbooster/booster_types:
+  - text: |-
+      There are three types of booster pump pressure to achieve:
+      1) 10 Bar
+      2) 15 Bar
+      3) 20 Bar
+  utter_chatbooster/deploy_booster_pump:
+  - text: |-
+      Booster pump is use for tank cleaning operations.
+      It is to connect to the gamma jet/sprinkle system that will be attached on the top of the tank.
+      Besides that, you may also use as a pump to transfer  less hazardous products.
+  utter_chatbooster/booster_operator:
+  - text: |
+      Booster pump is not a complicated machine to operate
+
+      There are not many procedure to operate a booster pump.
+
+      Thus, the booster pump operator is able to operate without any specific training program.
+
+      For better understanding, Booster Pump operator must go through the introduction video.
+  utter_chatbooster/booster_material_usage:
+  - text: Water is recommended for the usage \nOil/corrossive material are not recommended as it will damage the internal part of the machine and shorten the life span of the machine \nIt is advisable to verify the Material Safety Data Sheet (MSDS) before using the booster pump.
+  utter_chatbooster/booster_operating_procedures:
+  - text: I can show you the operating procedures
+  utter_chatbooster/booster_in_out_connection:
+  - image: https://i.imgur.com/Y6xxsDB.jpg
+    text: |-
+      The inlet and outlet connection on the booster pump are 3" (inch) male adapter.
+      	You may refer to the attached image (Fig. 1.2)
+  utter_chatbooster/booster_hoses_connection:
+  - image: https://i.imgur.com/XaILht5.jpg
+    text: |-
+      The inlet and outlet of the hoses connection must be 3" (inch) female Camlock coupling.
+      	Please refer to attached image (Fig. 1.1)
+  utter_chatbooster/booster_speed_lever:
+  - image: https://i.imgur.com/GxMQiG3.jpg
+    text: |-
+      1. Speed lever is a means of controlling an engine's power by regulating the amount of fuel or air intake.
+      2. Booster pump operator can increase or decrease
+      the power of the engine by adjusting the speed lever.
+      3. To maintain the booster pump pressure, the speed leverl is to slide to the desired pressure and lock it by tightening the but.
+       **You may refer to the attached image (Fig.
+      1.6)**
+
+  utter_chatbooster/booster_pressure_gauge:
+  - image: https://i.imgur.com/gVmh2Sh.jpg
+    text: |-
+      1.  Instruments used to measure and display pressure in an integral unit are called pressure gauges.
+      2.  Pressure gauge helps the operator to monitor the pressure of the fluid that is deliverying to the tank.
+      3.  The operator is required to install the pressure gauge at the fluid outlet connection on the booster pump.
+      **You may refer to the attach image. (Fig. 1.7)**
+
+  utter_chatbooster/booster_start_button:
+  - image: https://i.imgur.com/iEkZnME.jpg
+    text: |-
+      To power up the booster pump engine, please press the start button.
+      **You may refer to the attached image Fig. 1.3**
+
+## BOOSTER PUMP TECHNICAL SPECIFICATIONS
+
+  utter_chatbooster/booster_pump_weight:
+  - text: |
+      The gross weight of the booster pump is approximately 2500kg
+
+  utter_chatbooster/fuel_consume_booster:
+  - image: https://i.imgur.com/paz0fXW.jpg
+    text: |-
+      1.  The fuel to be used on the booster pump is Diesel Euro 4/5 and above.
+      2.  You are required to fill the diesel from the filling point.
+      **You may refer to the attached image. (Fig. 1.15)**
+
+## BOOSTER PUMP SAFETY ASPECTS
+
+  utter_chatbooster/booster_diesel_gauge:
+  - image: https://i.imgur.com/gUlg2ji.jpg
+    text: |-
+      1. The diesel gauge is use to monitor the quantity fuel contain in the booster pump.
+      2. The diesel gauge is located next to the diesel filling point.
+      3. Please ensure that the diesel is sufficient before operating the booster pump.
+      **You may refer to the attached image. (Fig. 1.11)**
+
+  utter_chatbooster/booster_drip_tray:
+  - image: https://i.imgur.com/rcQXAn7.jpg
+    text: |-
+      1. Drip tray is design to catch oil drips from the engine compartment or diesel tank.
+      2. The drip tray is fitted on bottom of the booster pump.
+      3. There is lowest point to allow excess oil out of the drip tray.
+      4. Usually a valve is attached to the lowest point.
+      **You may refer to the attached image (Fig. 1.14)**
+
+  utter_chatbooster/booster_whip_arrestor:
+  - image: https://i.imgur.com/ktH0PJH.jpg
+    text: |-
+      1. Whip arrestor are designed to prevent injuries or accidents resulting from a hose or coupling failure by connecting pressurized lines across the coupling.
+      2. Applying whip arrestor will prevent the hoses from flying around should the connection inadvertently separate.
+      3. Whip arrestor is usually secure at the end of the hoses connection.
+      **You may refer to the attached image (Fig. 1.12)**
+
+  utter_chatbooster/handling_booster_pump:
+  - image: https://i.imgur.com/580Xa5m.jpg
+    text: |-
+      **There are 2 ways of lifting the booster pump.**
+      1. Forklift (more than 2.5 Tonnes) can be used to lift up the booster pump. There is a forklift pockets attached at the bottom of the booster pump.
+      2. Lorry crane can be used to lift up the booster pump. There is a lifting lug attached on the booster pump.
+      **You may refer to the attached image. (Fig. 1.19)**
+
+  utter_chatbooster/booster_earthing_point:
+  - image: https://i.imgur.com/T3Xek46.jpg
+    text: |-
+      - Earthing is to ensure that no static electricity is passing through our body and to prevent any static fire to ignite.
+      - Thus, the booster pump is required to be grounded by connecting to the nearest grounding point with the earthing cable.
+      **You may refer to the attached image. (Fig 1.13)**
+
+## BOOSTER PUMP MAINTENANCE & INSPECTION
+
+  utter_chatbooster/booster_maintenance:
+  - text: |-
+      - Maintenance is carried out to keep equipment and systems running efficiently during at least its usual life cycle.
+      - Maintenance of the Booster Pump is done every monthly by Greenchem Mechanic at Greenchem Facilities.
+      - Maintenance record is being update and documented through Booster Pump Monthly Checklist.
+
+  utter_chatbooster/booster_certification:
+  - text: |-
+      There is no regulation to inspect/certify low pressure high flow pump.
+      Thus the booster pump is not required to be certified.
+      Usually, the booster pump will be inspected internally before being deployed.
+
+## END OF BOOSTER PUMP
+
+## VACUUM TRUCK
+## VACUUM TRUCK GENERAL
+
+  utter_chatvac/vacuum_purpose:
+  - text: |-
+      A vacuum truck is a tank truck that has a pump and a tank.
+      The pump is designed to pneumatically suck liquids, sludges, slurries, or the like from a location (often underground) into the tank of the truck.
+      The objective is to enable transport of the liquid material via road to another location.
+  utter_chatvac/vac_truck_driver_requirement:
+  - text: |-
+      As our vacuum truck will be used to transport hazardous materials, other than the Class 4 driving license, driver needs to attend a 1-day course to obtain a Hazardous Material Transport (HAZMAT) Driver Permit at training centres appointed by SCDF.
+      Please approach your supervisor to sign up and identify location and schedule of the training.
+  utter_chatvac/vac_product_label:
+  - image: https://i.imgur.com/IY8HPhl.jpg
+    text: |-
+      Driver is responsible to put on product label which specify the product to be transported accurately on the side of the vacuum truck and its associated risk.
+      This is part of hazard mitigation while on the road and hence, the product label has to be in place while performing transportation.
+
+## VACUUM TRUCK OPERATIONS
+
+  utter_chatvac/vac_truck_hose:
+  - text: |-
+      Greenchem's vacuum trucks uses 4" reinforced high pressure spring PVC tubing hoses as channel of flow.
+  utter_chatvac/vac_truck_pressure_gauge:
+  - text: |-
+      The vacuum truck pressure gauge is for monitoring of pressure during suction or discharging.
+      The value read from the gauge is an indicator if the vacuum truck is operating as intended.
+  utter_chatvac/vac_truck_pressure_gauge_image:
+  - image: https://i.imgur.com/kbAkPOQ.jpg
+    text: |-
+      Image of vacuum truck pressure gauge.
+  utter_chatvac/vac_valve_connection:
+  - text: |-
+      The vacuum truck is using a 4 inch aluminium camlock fitting on its suction and discharge valves.
+  utter_chatvac/vac_truck_tank_level_indicator:
+  - image: https://i.imgur.com/9e8wVtz.jpg
+    text: |-
+      The vacuum truck level indicator is located at the back of the vacuum tank to indicate the level of the liquid inside it.
+      It can be used to monitor progress of suction or discharge.
+  utter_chatvac/buddy_operate_vac_truck:
+  - text: |-
+      2 man is required to operate the vacuum truck;
+      ie. a vacuum truck operator and a helper who assist with the connection of hoses.
+  utter_chatvac/vac_truck_PTO_switch:
+  - image: https://i.imgur.com/XHt1KzC.jpg
+    text: |-
+      Power take-offs (PTOs) are mechanical gearboxes that attach to apertures provided on truck transmissions and are used to transfer the power of the vehicle engine to auxiliary components, for the vacuum truck would be a vacuum pump.
+      It is usually a pushbutton located on the driver dashboard.
+      The vacuum truck will not be able to perform suction or discharge if the PTO switch is not turned on.
+
+## VACUUM TRUCK TECHNICAL SPECIFICATIONS
+
+  utter_chatvac/vac_discharge_pressure:
+  - text: |-
+      The vacuum truck discharge pressure ranges from 10 - 20 PSI.
+  utter_chatvac/vac_holding_capacity:
+  - text: |-
+      Greenchem owns three vacuum trucks with tank holding capacity of 9,000 litres, 14,000 litres and 15,000 litres respectively.
+  utter_chatvac/vac_fuel_type:
+  - text: |-
+      Greenchem vacuum trucks uses diesel with Euro 4 or 5 standard.
+  utter_chatvac/vac_material_type:
+  - text: |-
+      All 3 vacuum trucks' vacuum tanks of Greenchem are made from different material.
+      - Specifically, the 9000 litres vacuum tank is of carbon steel,
+      - 14,000 litres vacuum tank is of 316L stainless steeland
+      - 15,000 litres vacuum tank is of mild steel.
+  utter_chatvac/vac_15k_suction_rate:
+  - text: |-
+      The suction rate of Greenchem's 15,000 litres vacuum truck is 4000 m3/hr.
+
+## VACUUM TRUCK SAFETY
+
+  utter_chatvac/vac_truck_ppe:
+  - text: |-
+      Vacuum truck operator is required to put on PPE or Personal Protective Equipment such as:
+        - Safety Helmet,
+        - Face Shield and
+        - Safety Goggles,
+        - Ear Plugs,
+        - Coverall Uniform,
+        - Chemical Gloves and
+        - Safety Boots.
+      These PPE help to mitigate the risks or hazards associated with operating the vacuum truck.
+  utter_chatvac/vac_earthing:
+  - image: https://i.imgur.com/gnumkGj.jpg
+    text: |-
+      - Grounding or earthing of the vacuum truck is achieve by connecting the on-board MGV earthing cable to a nearby earthing point.
+      - Vacuum trucks and bulk chemical road tankers transferring flammable products require static grounding protection to prevent the build-up of static electricity on the truck or equipment, like hoses, that are connected to the truck.
+      - If static electricity is allowed to build up on the truck the discharge of a static spark becomes an ignition hazard.
+  utter_chatvac/vac_lel_sensor:
+  - image: https://i.imgur.com/j4boMWz.jpg
+    text: |-
+      - The vacuum truck is fitted with a sensor to detect level of LEL(Lower Explosive Limit) around its immediate surrounding while in operation.
+      - The sensor will trigger an alarm when level of LEL exceed the programmed threshold.
+  utter_chatvac/vac_parking:
+  - text: |-
+      The vacuum truck should be parked on flat and even ground.
+      This will ensure the liquid inside the vacuum tank is evenly distributed and the reading on level indicator is accurate.
+      **Alternatively you can search how to ensure vacuum truck wheel choke to secure while at stationary or in operation**
+  utter_chatvac/vac_wheelchoke:
+  - image: https://i.imgur.com/Qdkz88e.jpg
+    text: |-
+      - Wheel chokes are to be placed on all of vacuum truck wheels to prevent accidental movement.
+      - Wheel chokes are a wedge of sturdy material, such as polyurethane or rubber, placed against a vehicle's wheels to prevent accidental movement.
+      - Chokes are placed for safety in addition to setting the brakes.
+      - The bottom surface is sometimes coated in rubber to enhance grip with the ground.
+  utter_chatvac/vac_emergency_button:
+  - image: https://i.imgur.com/yQpS0rG.jpg
+    text: |-
+      In the event of an emergency while operating the vacuum truck, press the emergency button located at the rear side of the vacuum truck to cut source of power transmission to bring all operations to a complete stop.
+  utter_chatvac/vac_maintenance:
+  - text: |-
+      - Maintenance of the Vacuum truck is done monthly by Greenchem Mechanic at Greenchem Facilities with the help of the checklist.
+      - Yearly inspection by STA is required in accordance to MOM regulation and LTA regulation.
+  utter_chatvac/vac_hose_certification:
+  - text: |-
+      Every length of vacuum truck hose requires yearly hydrostatic test, where it is tested on its strength and for leak.
+      Upon passing the test, the hose will be issued with a certificate.
+      **Consult Greenchem Admin Team on the vendor performing the hydrostatic test.**
+  utter_chatvac/vac_tank_cleaning:
+  - text: |-
+      Regular cleaning of the vacuum truck tank is necessary to prevent build-up of hardened sludge or when the tank was used to hold corrosive liquid.
+      - Frequency of cleaning depends on rate of use and last item stored in the tank.
+      - Cleaning can also be necessary to ensure tank is empty before deploying the vacuum truck for certain special job.
+      - Cleaning is done in Greenchem facility and should only be performed by trained personnel.
+
+##    END OF VACUUM TRUCK
+
+
+  utter_out_of_scope:
+  - text: Sorry, I'm not sure how to respond to that. Type "help" for assistance.
+  utter_greet:
+  - text: Hello, {username}! I'm your IT Helpdesk Assistant.
+  - text: Hi, I am an IT Helpdesk Assistant. Ready to help you out.
+  utter_goodbye:
+  - text: Goodbye!
+  utter_ask_incident_title:
+  - text: What should we use for the title of this incident?
+  utter_ask_problem_description:
+  - text: What is the problem description for the issue?
+  utter_help:
+  - text: |-
+      I can help you open a service request ticket, or check the status of your open incidents.
+      You can ask me things like:
+      - Open an incident
+      - Help me reset my password
+      - I'm having a issue with my email
+      - What's the status of the ticket I opened?
+  utter_green_help:
+  - text: |-
+      I can asisst you with some training and learning of following operations
+      You can choose the following learning options
+      - Operating of Hydrojet Machine
+      - Operating of Booster Pump
+      - Operating of Vacuum Truck
+  utter_green_option_hydrojet_machine:
+  - text: |-
+      Awesome, in here we will be covering the following chapters 20 000 psi hydrojet machine
+      1. Hydrojet Checklist/Inspection
+      2. Hoses Connection To Gun
+      3. Start of Engine
+      4. Check For Leakage
+      5. Monitoring
+      6. Stop of Engine
+      7. Housekeeping
+  utter_green_option_booster_pump:
+  - text: |-
+      Great, in here we shall be covering the following chapters for 12 bar booster pump
+      1. Booster Pump Setup & Inspection
+      2. Booster Pump Hoses Connection
+      3. Booster Pump Start Engine
+      4. Booster Pump Speed Lever Adjustment
+      5. Booster Pump Monitor Pressure
+      6. Booster Pump Check For Leakage
+      7. Booster Pump Initiating To Power Down Procedures
+      8. Booster Pump Speed Lever Down Adjustment
+      9. Booster Pump Pull The Stop Lever
+      10. Booster Pump Pressure Discharge
+      11. Booster Pump Outlet Valve
+      12. Booster Pump Disconnection All Hoses
+  utter_green_option_vacuum_truck:
+  - text: |-
+      Perfect, in here we are covering the following chapters for Vacuum Truck
+      1. Vacuum Truck Pre-Work Setup
+      2. Vacuum Truck Engine Start
+      3. Vacuum Truck Hoses Connection
+      4. Vacuum Truck Configuration Onboard Control Panel
+      5. Vacuum Truck Commence Suction
+      6. Vacuum Truck End Suction
+      7. Vacuum Truck End Configuration Onboard Control Panel
+      8. Vacuum Truck Disconnection Transfer Hoses
+      9. Vacuum Truck Power-Down
+      10. Housekeeping
+  utter_welcome:
+  - text: You're welcome!
+  utter_default:
+  - text: I didn't quite understand that. Could you rephrase?
+  utter_ask_confirm:
+  - buttons:
+    - payload: /affirm
+      title: Yes
+    - payload: /deny
+      title: No, cancel the incident
+    text: |-
+      Should I open an incident with the following details?
+          Title: {incident_title}
+          Description: {problem_description}
+  utter_incident_creation_canceled:
+  - text: Alright, I have cancelled the incident.
+  utter_ask_whatelse:
+  - text: What else can I help you with?
+  utter_chitchat/ask_weather:
+  - text: I am not a weather presenter but I hope it will be sunny outside.
+  utter_chitchat/bot_challenge:
+  - text: Yes, indeed. I was created by a developer of Steve.
+
+  utter_chitchat/affirm_can:
+  - text: Yes, you can!
+  - text: Sure, you can!
+  - text: Of course, you can!
+  - text: Definitely you can!
+  - text: Don't worry you can.
+  utter_chitchat/affirm_yes:
+  - text: Yes.
+  - text: Of course!
+  - text: Definitely yes!
+  utter_chitchat/affirm_should:
+  - text: Yes, you should
+  - text: Of course, you should!
+  - text: You should do that!
+  - text: Sure, you should!
+  utter_chitchat/deny_no:
+  - text: No.
+  - text: No, you can't
+  - text: Nope!
+  utter_chitchat/deny_should_not:
+  - text: No, you shouldn't
+  - text: No, you should not
+  - text: Of course, no
+  utter_chitchat/ask_supervisor:
+  - text: You may refer to your supervisor for more information.
+  - text: Kindly approach to your supervisor for any further clarificaitons.
+
+  utter_chitchat/not_human_challenge:
+  - text: No, I am not a human.
+  - text: You must have misunderstood me as a human.
+  - text: Don't take me as a human. I am created by smartest human in the world.
+  - text: If you think so, please ask my master Steve.
+  utter_ask_number:
+  - text: What is your user id?
+  utter_ask_email:
+  - text: What is your email?
+actions:
+- action_incident_status
+- action_hi
+forms:
+  open_incident_form:
+    confirm:
+    - intent: affirm
+      type: from_intent
+      value: true
+    - intent: deny
+      type: from_intent
+      value: false
+    email:
+    - entity: email
+      type: from_entity
+    incident_title:
+    - intent: password_reset
+      type: from_trigger_intent
+      value: Problem with password
+    - intent: problem_email
+      type: from_trigger_intent
+      value: Problem with email
+    - not_intent:
+      - incident_status
+      - help
+      - affirm
+      - deny
+      type: from_text
+    problem_description:
+    - not_intent:
+      - incident_status
+      - help
+      - affirm
+      - deny
+      type: from_text
+e2e_actions: []
