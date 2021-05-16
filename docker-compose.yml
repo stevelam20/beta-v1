@@ -1,8 +1,8 @@
 version: '3.4'
 services:
-  greenchat-v2-action-server:
+  beta-v1-action-server:
     build: .
     # tag it with the registry of microk8s
-    image: localhost:32000/greenchat-v2-action-server:0.0.1
+    image: localhost:32000/beta-v1-action-server:0.0.1
     expose:
       - "5055"
