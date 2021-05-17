@@ -15,11 +15,6 @@ rules:
   - intent: chathydrojet
   - action: utter_chathydrojet
 
-- rule: Handle chathydro + chatbooster
-  steps:
-  - intent: chathydrojet + chatbooster
-  - action: utter_chathydrojet + utter_chatbooster
-
 - rule: Handle chatbooster
   steps:
   - intent: chatbooster
