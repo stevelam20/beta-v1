@@ -17,8 +17,8 @@ rules:
 
 - rule: Handle chathydro + chatbooster
   steps:
-  - intent: chathydrojet+chatbooster
-  - action: utter_chathydrojet+utter_chatbooster
+  - intent: chathydrojet + chatbooster
+  - action: utter_chathydrojet + utter_chatbooster
 
 - rule: Handle chatbooster
   steps:
